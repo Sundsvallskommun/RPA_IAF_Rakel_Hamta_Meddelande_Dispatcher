@@ -1,8 +1,10 @@
 {
-  "name": "RoboticEnterpriseFramework-Windows",
-  "description": "Robotic Enterprise Framework (Windows)",
+  "name": "RPA_IAF_Rakel_Hamta_Meddelande_Dispatcher",
+  "projectId": "b73cadb8-0929-4777-8f3a-e7b09cbdf47f",
+  "description": "Hämtar meddelanden och bilagor från OeP (IAF Rakel) för att lägga upp i en orch kö",
   "main": "Main.xaml",
   "dependencies": {
+    "OpenEplatform.API_Windows": "[1.0.10]",
     "UiPath.Excel.Activities": "[2.22.4]",
     "UiPath.System.Activities": "[24.3.1]",
     "UiPath.Testing.Activities": "[23.10.1]",
@@ -85,7 +87,8 @@
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
       }
     ],
-    "modernBehavior": false
+    "modernBehavior": false,
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
