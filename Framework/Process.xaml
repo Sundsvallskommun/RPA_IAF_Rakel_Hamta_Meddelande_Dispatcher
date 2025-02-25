@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>941,1101</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2722,1212</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -233,30 +233,14 @@
         </sap:WorkflowViewStateService.ViewState>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Cases With Statuses.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get Cases With Statuses.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sc:IEnumerable" x:Key="in_ListOfStatuses">
-              <VisualBasicValue x:TypeArguments="sc:IEnumerable" ExpressionText="ListOfStatuses" />
-            </InArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Cases">
-              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_Cases" />
-            </OutArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_FamilyID">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(FamilyID)" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePUsrName" />
-            </InArgument>
-            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">
-              <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="OePPwr" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePURL" />
-            </InArgument>
+            <InArgument x:TypeArguments="sc:IEnumerable" x:Key="in_ListOfStatuses">[ListOfStatuses]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Cases">[dt_Cases]</OutArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_FamilyID">[CInt(FamilyID)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">[DateToGetCases]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">[DateToGetCases]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">[OePUsrName]</InArgument>
+            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">[OePPwr]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">[OePURL]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -265,10 +249,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID0" DisplayName="Hittades ärenden?" sap:VirtualizedContainerService.HintSize="101,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-            <FlowDecision.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="dt_Cases IsNot Nothing AndAlso dt_Cases.RowCount &gt; 0" />
-            </FlowDecision.Condition>
+          <FlowDecision x:Name="__ReferenceID0" Condition="[dt_Cases IsNot Nothing AndAlso dt_Cases.RowCount &gt; 0]" DisplayName="Hittades ärenden?" sap:VirtualizedContainerService.HintSize="101,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -289,30 +270,14 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Messages.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get Messages.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_FamilyID">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="FamilyID" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePUsrName" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">
-                      <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="OePPwr" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePURL" />
-                    </InArgument>
-                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Messages">
-                      <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_Messages" />
-                    </OutArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Cases">
-                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_Cases" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_FamilyID">[FamilyID]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">[DateToGetCases]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">[DateToGetCases]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">[OePUsrName]</InArgument>
+                    <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">[OePPwr]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">[OePURL]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Messages">[dt_Messages]</OutArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Cases">[dt_Cases]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -321,10 +286,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InvokeWorkflowFile>
                 <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID3" DisplayName="Finns meddelanden?" sap:VirtualizedContainerService.HintSize="115,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-                    <FlowDecision.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="dt_Messages IsNot Nothing AndAlso dt_Messages.RowCount &gt; 0" />
-                    </FlowDecision.Condition>
+                  <FlowDecision x:Name="__ReferenceID3" Condition="[dt_Messages IsNot Nothing AndAlso dt_Messages.RowCount &gt; 0]" DisplayName="Finns meddelanden?" sap:VirtualizedContainerService.HintSize="115,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -344,24 +306,12 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Attachments &amp; Messages and Upload to Queue.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Get Attachments &amp; Messages and Upload to Queue.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Messages">
-                              <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_Messages" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePUsrName" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">
-                              <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="OePPwr" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePURL" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_ResultOfDay">
-                              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_ResultOfDay" />
-                            </OutArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Messages">[dt_Messages]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">[OePUsrName]</InArgument>
+                            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">[OePPwr]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">[OePURL]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_ResultOfDay">[out_ResultOfDay]</OutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -379,7 +329,7 @@
                             <av:Size x:Key="ShapeSize">200,81</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="No Messages" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence DisplayName="No Messages" sap:VirtualizedContainerService.HintSize="496,374" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -421,19 +371,19 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Inga ärenden hittades med status: &quot; + ListOfStatuses.ToString.Replace(&quot;;&quot;, &quot; &quot;) + &quot; för datumet: &quot; + DateToGetCases]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Inga ärenden hittades med status: &quot; + string.Join(&quot;, &quot;, ListOfStatuses) + &quot; för datumet: &quot; + DateToGetCases]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[out_ResultOfDay]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">["Inga ärenden hittades med status: " + ListOfStatuses.ToString.Replace(";", " ") + " för datumet: " + DateToGetCases]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["Inga ärenden hittades med status: " + string.Join(", ", ListOfStatuses) + " för datumet: " + DateToGetCases]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
