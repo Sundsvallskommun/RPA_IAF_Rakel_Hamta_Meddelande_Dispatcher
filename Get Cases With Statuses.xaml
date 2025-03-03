@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Cases_With_Statuses" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Cases_With_Statuses" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_ListOfStatuses" Type="InArgument(sc:IEnumerable)" />
+    <x:Property Name="in_ListOfStatuses" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="out_dt_Cases" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_FamilyID" Type="InArgument(x:Int32)" />
     <x:Property Name="in_DateFrom" Type="InArgument(x:String)" />
@@ -10,7 +10,7 @@
     <x:Property Name="in_OePURL" Type="InArgument(x:String)" />
   </x:Members>
   <this:Get_Cases_With_Statuses.in_ListOfStatuses>
-    <InArgument x:TypeArguments="sc:IEnumerable" />
+    <InArgument x:TypeArguments="scg:List(x:String)" />
   </this:Get_Cases_With_Statuses.in_ListOfStatuses>
   <this:Get_Cases_With_Statuses.in_FamilyID>
     <InArgument x:TypeArguments="x:Int32" />
@@ -33,7 +33,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2663,820</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1783,1001</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Cases_With_Statuses_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,13 +121,13 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Cases_With_Statuses" sap:VirtualizedContainerService.HintSize="476,755" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Cases_With_Statuses" sap:VirtualizedContainerService.HintSize="476,754" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - out_dt_Cases" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - out_dt_Cases" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dt_Cases]</OutArgument>
       </Assign.To>
@@ -190,6 +190,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Hämtade ärenden för datumet : &quot; + in_DateFrom + &quot; och statusarna: &quot; + string.Join(&quot;, &quot;, in_ListOfStatuses)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Hämtade ärenden för datumet : &quot; + in_DateFrom + &quot; och statusarna: &quot; + If(in_ListOfStatuses.Any(), in_ListOfStatuses.Aggregate(Function(a, b) a &amp; &quot;, &quot; &amp; b), &quot;&quot;)]" />
   </Sequence>
 </Activity>

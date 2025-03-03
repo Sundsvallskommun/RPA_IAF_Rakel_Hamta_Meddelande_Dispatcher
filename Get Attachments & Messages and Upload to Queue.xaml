@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Attachments___Messages_and_Upload_to_Queue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Private.Xml.Linq" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Attachments___Messages_and_Upload_to_Queue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Private.Xml.Linq" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dt_Messages" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_OePUsrName" Type="InArgument(x:String)" />
@@ -13,7 +13,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2722,1212</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1783,1008</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Attachments___Messages_and_Upload_to_Queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -56,6 +56,7 @@
       <x:String>Newtonsoft.Json</x:String>
       <x:String>System.Dynamic</x:String>
       <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -128,18 +129,20 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Attachments___Messages_and_Upload_to_Queue" sap:VirtualizedContainerService.HintSize="476,536" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Attachments___Messages_and_Upload_to_Queue" sap:VirtualizedContainerService.HintSize="476,943" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="ListOfCaseID" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="ListOfAllAttachmentsIDs" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="ListOfAllMessageIDs" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="CasesWithAttachmentsAndMessages" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="CasesWithoutAttachmentsAndMessages" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - ListOfCaseID" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - ListOfCaseID" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfCaseID]</OutArgument>
       </Assign.To>
@@ -152,13 +155,29 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfCaseID" sap:VirtualizedContainerService.HintSize="555,785" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListOfCaseID]">
+    <Assign DisplayName="Assign - CasesWithAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[CasesWithAttachmentsAndMessages]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - CasesWithoutAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[CasesWithoutAttachmentsAndMessages]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfCaseID" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListOfCaseID]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentCase" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="521,599" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="452,972" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_TEMP" />
               <Variable x:TypeArguments="x:String" Name="AllAttachmentIDs" />
@@ -169,7 +188,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:FilterDataTable DataTable="[in_dt_Messages]" DisplayName="Filter Data Table - Only get messages from client and the current CaseID" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,25" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_TEMP]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable DataTable="[in_dt_Messages]" DisplayName="Filter Data Table - Only get messages from client and the current CaseID" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="410,25" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_TEMP]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -202,13 +221,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FilterDataTable>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_TEMP]" DisplayName="For Each Row in Data Table - dt_TEMP" sap:VirtualizedContainerService.HintSize="479,25" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_TEMP]" DisplayName="For Each Row in Data Table - dt_TEMP" sap:VirtualizedContainerService.HintSize="410,25" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,533" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,537" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="sxl:XDocument" Name="MessageAsXML" />
                       <Variable x:TypeArguments="scg:List(x:String)" Name="ListOfAttachmentIDs" />
@@ -218,7 +237,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <o:Get_Message sap2010:Annotation.AnnotationText="To get attachment ID we have to get the XML for the message." DisplayName="Get Message" DomainURL="[in_OePURL]" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Get_Message_1" MessageAsXMLDocument="[MessageAsXML]" MessageID="[CInt(CurrentRow(0))]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="15000" Username="[in_OePUsrName]">
+                    <o:Get_Message sap2010:Annotation.AnnotationText="To get attachment ID we have to get the XML for the message." DisplayName="Get Message" DomainURL="[in_OePURL]" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="Get_Message_1" MessageAsXMLDocument="[MessageAsXML]" MessageID="[CInt(CurrentRow(0))]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" Username="[in_OePUsrName]">
                       <o:Get_Message.TempFolder>
                         <InArgument x:TypeArguments="x:String" />
                       </o:Get_Message.TempFolder>
@@ -230,7 +249,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </o:Get_Message>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAttachmentIDs]</OutArgument>
                       </Assign.To>
@@ -282,7 +301,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <ui:MultipleAssign DisplayName="Multiple Assign - Lists to Strings" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+            <ui:MultipleAssign DisplayName="Multiple Assign - Lists to Strings" sap:VirtualizedContainerService.HintSize="410,25" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -303,38 +322,67 @@
                   </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
-            </ui:MultipleAssign>
-            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Add to Performer queue" sap:VirtualizedContainerService.HintSize="479,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueNamePerformer&quot;).ToString]" Reference="[currentCase]">
-              <ui:AddQueueItem.ItemInformation>
-                <InArgument x:TypeArguments="x:String" x:Key="MessageID">[AllMessagesIDs]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="AttachmentsID">[AllAttachmentIDs]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="AddedDate">[Today.ToString("yyyy-MM-dd")]</InArgument>
-              </ui:AddQueueItem.ItemInformation>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:AddQueueItem>
+            </ui:MultipleAssign>
+            <If Condition="[AllMessagesIDs.Count &gt; 0 OrElse &#xD;&#xA;AllAttachmentIDs.Count &gt; 0]" DisplayName="If - Messages or Attachments" sap:VirtualizedContainerService.HintSize="410,689" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,286" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[currentCase]" List="[CasesWithAttachmentsAndMessages]" />
+                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Add to Performer queue" sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueNamePerformer&quot;).ToString]" Reference="[currentCase]">
+                    <ui:AddQueueItem.ItemInformation>
+                      <InArgument x:TypeArguments="x:String" x:Key="MessageID">[AllMessagesIDs]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="AttachmentsID">[AllAttachmentIDs]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="AddedDate">[Today.ToString("yyyy-MM-dd")]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="CaseID">[currentCase.ToString]</InArgument>
+                    </ui:AddQueueItem.ItemInformation>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddQueueItem>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[currentCase]" List="[CasesWithoutAttachmentsAndMessages]" />
+                </Sequence>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_ResultOfDay]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Haterade meddelanden och bilagor för: " + string.Join("; ", ListOfCaseID)]</InArgument>
+        <InArgument x:TypeArguments="x:String">["Ärende(n) med meddelanden och bilagor: " + string.Join("; ", CasesWithAttachmentsAndMessages) + If(CasesWithoutAttachmentsAndMessages.Count &gt; 0, vbCrLf + "Ärende(n) utan meddelanden eller bilagor som inte kommer fortsätta hanteras: " + string.Join("; ", CasesWithoutAttachmentsAndMessages), "")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Haterade meddelanden och bilagor för: &quot; + string.Join(&quot;; &quot;, ListOfCaseID)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Ärende(n) med meddelanden och bilagor: &quot; + string.Join(&quot;; &quot;, CasesWithAttachmentsAndMessages) + If(CasesWithoutAttachmentsAndMessages.Count &gt; 0, vbCrLf + &quot;Ärende(n) utan meddelanden eller bilagor som inte kommer fortsätta hanteras: &quot; + string.Join(&quot;; &quot;, CasesWithoutAttachmentsAndMessages), &quot;&quot;)]" />
   </Sequence>
 </Activity>

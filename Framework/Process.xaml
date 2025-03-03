@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2722,1212</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1783,1101</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -231,16 +231,32 @@
             <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,209.50000000000003 291,209.50000000000003 291,229.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Cases With Statuses.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get Cases With Statuses.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Cases With Statuses.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get Cases With Statuses.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sc:IEnumerable" x:Key="in_ListOfStatuses">[ListOfStatuses]</InArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Cases">[dt_Cases]</OutArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_FamilyID">[CInt(FamilyID)]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">[DateToGetCases]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">[DateToGetCases]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">[OePUsrName]</InArgument>
-            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">[OePPwr]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">[OePURL]</InArgument>
+            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfStatuses">
+              <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListOfStatuses" />
+            </InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Cases">
+              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_Cases" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_FamilyID">
+              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(FamilyID)" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateToGetCases" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePUsrName" />
+            </InArgument>
+            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">
+              <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="OePPwr" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePURL" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -329,7 +345,7 @@
                             <av:Size x:Key="ShapeSize">200,81</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="No Messages" sap:VirtualizedContainerService.HintSize="496,374" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence DisplayName="No Messages" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

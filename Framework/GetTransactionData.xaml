@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>941,1258</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1842,1258</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -197,10 +197,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:RetryScope>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID1" DisplayName="Any Transaction Data?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-            <FlowDecision.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="out_TransactionItem IsNot Nothing" />
-            </FlowDecision.Condition>
+          <FlowDecision x:Name="__ReferenceID1" Condition="[out_TransactionItem IsNot Nothing]" DisplayName="Any Transaction Data?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,7 +233,7 @@
                     <av:PointCollection x:Key="ConnectorLocation">512,333.5 512,363.5 516.5,363.5 516.5,383.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Get date from latest run" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Get date from latest run" sap:VirtualizedContainerService.HintSize="572,1165" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="DaysToSubtract" />
                     <Variable x:TypeArguments="s:DateTime" Name="TodaySubDays" />
@@ -247,18 +244,15 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Get date from latest run.&quot;]" />
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Get date from latest run.&quot;]" />
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LatestRun" CacheStrategy="None" DisplayName="Get Asset - Get Latestrun from activity, config is static when beeing populated" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[LatestRun]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                  </ui:GetRobotAsset>
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="510,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:String">[LatestRun]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[in_Config("LatestRun").ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:String">[DaysToSubtract]</OutArgument>
@@ -279,15 +273,15 @@
                     </ui:MultipleAssign.AssignOperations>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:MultipleAssign>
-                  <If Condition="[Date.TryParseExact(LatestRun,&quot;yyyy-MM-dd&quot;,Nothing,Globalization.DateTimeStyles.None,Nothing)]" DisplayName="If - A date " sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[Date.TryParseExact(LatestRun,&quot;yyyy-MM-dd&quot;,Nothing,Globalization.DateTimeStyles.None,Nothing)]" DisplayName="If - A date " sap:VirtualizedContainerService.HintSize="510,351" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -318,7 +312,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <Assign sap2010:Annotation.AnnotationText="Get a list of dates between today and latest run" DisplayName="Assign - DateList" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign sap2010:Annotation.AnnotationText="Get a list of dates between today and latest run" DisplayName="Assign - DateList" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:List(s:DateTime)">[DateList]</OutArgument>
                     </Assign.To>
@@ -335,7 +329,7 @@
                 <FlowStep.Next>
                   <FlowDecision x:Name="__ReferenceID4" DisplayName="Dates between?" sap:VirtualizedContainerService.HintSize="88,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                     <FlowDecision.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="DateList.Count &gt; 0 AndAlso if(DateList.Count = 1, Not DateList.FirstOrDefault.Equals(LatestRunDateSubDays), True)" />
+                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Date.Parse(LatestRun) &lt;&gt; Today" />
                     </FlowDecision.Condition>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -382,7 +376,7 @@
                               </ActivityAction>
                             </ui:ForEach.Body>
                           </ui:ForEach>
-                          <If Condition="[Not in_Config(&quot;Environment&quot;).ToString.Equals(&quot;TEST&quot;)]" DisplayName="If - Do Not Upload if Test" sap:VirtualizedContainerService.HintSize="410,464" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If Condition="[True OrELse Not in_Config(&quot;Environment&quot;).ToString.Equals(&quot;TEST&quot;)]" DisplayName="If - Do Not Upload if Test" sap:VirtualizedContainerService.HintSize="410,464" sap2010:WorkflowViewState.IdRef="If_3">
                             <If.Then>
                               <Sequence sap:VirtualizedContainerService.HintSize="376,282" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                 <sap:WorkflowViewStateService.ViewState>
