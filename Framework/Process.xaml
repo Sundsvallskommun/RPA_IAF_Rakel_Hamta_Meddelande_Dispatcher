@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1565,1101</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1838,1101</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -308,30 +308,14 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Attachments &amp; Messages and Upload to Queue.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Get Attachments &amp; Messages and Upload to Queue.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Messages">
-                              <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_Messages" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePUsrName" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">
-                              <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="OePPwr" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="OePURL" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_ResultOfDay">
-                              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_ResultOfDay" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_CasesWithAttachmentsAndMessages">
-                              <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="out_CasesWithAttachmentsAndMessages" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_CasesWithoutAttachmentsAndMessages">
-                              <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="out_CasesWithoutAttachmentsAndMessages" />
-                            </OutArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Messages">[dt_Messages]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OePUsrName">[OePUsrName]</InArgument>
+                            <InArgument x:TypeArguments="ss:SecureString" x:Key="in_OePPwr">[OePPwr]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_OePURL">[OePURL]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_ResultOfDay">[out_ResultOfDay]</OutArgument>
+                            <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_CasesWithAttachmentsAndMessages">[out_CasesWithAttachmentsAndMessages]</OutArgument>
+                            <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_CasesWithoutAttachmentsAndMessages">[out_CasesWithoutAttachmentsAndMessages]</OutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
