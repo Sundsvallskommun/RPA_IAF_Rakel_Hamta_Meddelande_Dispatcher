@@ -12,7 +12,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1838,2088</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1776,3745</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Messages_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -137,7 +137,7 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Messages" sap:VirtualizedContainerService.HintSize="528,2023" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Messages" sap:VirtualizedContainerService.HintSize="680,3600" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="FoundMessages" />
       <Variable x:TypeArguments="s:DateTime" Name="EarliestDate" />
@@ -149,7 +149,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap2010:Annotation.AnnotationText="Get the earliest date in the datatable" DisplayName="Assign - EarliestDate" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Get the earliest date in the datatable" DisplayName="Assign - EarliestDate" sap:VirtualizedContainerService.HintSize="638,113" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[EarliestDate]</OutArgument>
       </Assign.To>
@@ -162,7 +162,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:FilterDataTable DataTable="[in_dt_Cases]" DisplayName="Filter Data Table - Only keep FlowId" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="486,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[in_dt_Cases]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[in_dt_Cases]" DisplayName="Filter Data Table - Only keep FlowId" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="638,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[in_dt_Cases]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -180,19 +180,35 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <o:Get_Messages_By_FamilyID__Not_Version_Specific_ MessagesAsXMLDocument="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" DisplayName="Get Messages By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundMessages]" FromDate="[EarliestDate]" sap:VirtualizedContainerService.HintSize="486,97" sap2010:WorkflowViewState.IdRef="Get_Messages_By_FamilyID__Not_Version_Specific__1" MessagesAsDataTable="[dt_MessagesTEMP]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" ToDate="[Today.AddDays(1)]" Username="[in_OePUsrName]">
-      <o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
-        <InArgument x:TypeArguments="x:String" />
-      </o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </o:Get_Messages_By_FamilyID__Not_Version_Specific_>
-    <Assign DisplayName="Assign - dt_CasesToBeHandeld" sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:RetryScope DisplayName="Retry Scope - Get Messages By FamilyID (Not Version Specific)" sap:VirtualizedContainerService.HintSize="638,360" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:30">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="300,185" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <o:Get_Messages_By_FamilyID__Not_Version_Specific_ MessagesAsXMLDocument="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" DisplayName="Get Messages By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundMessages]" FromDate="[EarliestDate]" sap:VirtualizedContainerService.HintSize="258,97" sap2010:WorkflowViewState.IdRef="Get_Messages_By_FamilyID__Not_Version_Specific__1" MessagesAsDataTable="[dt_MessagesTEMP]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" ToDate="[Today.AddDays(1)]" Username="[in_OePUsrName]">
+              <o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
+                <InArgument x:TypeArguments="x:String" />
+              </o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </o:Get_Messages_By_FamilyID__Not_Version_Specific_>
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <Assign DisplayName="Assign - dt_CasesToBeHandeld" sap:VirtualizedContainerService.HintSize="638,82" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[dt_CasesToBeHandeld]</OutArgument>
       </Assign.To>
@@ -200,7 +216,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[in_dt_Cases.Clone]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - out_dt_Messages" sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - out_dt_Messages" sap:VirtualizedContainerService.HintSize="638,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dt_Messages]</OutArgument>
       </Assign.To>
@@ -208,19 +224,19 @@
         <InArgument x:TypeArguments="sd:DataTable">[dt_MessagesTEMP.Clone]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Cases]" DisplayName="For Each Row in Data Table - Only handel cases where the Client has sent something" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Cases]" DisplayName="For Each Row in Data Table - Only handel cases where the Client has sent something" sap:VirtualizedContainerService.HintSize="638,1339" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="300,113" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="604,1153" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MessagesTEMP]" DisplayName="For Each Row in Data Table - All messages" sap:VirtualizedContainerService.HintSize="258,25" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MessagesTEMP]" DisplayName="For Each Row in Data Table - All messages" sap:VirtualizedContainerService.HintSize="562,1065" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -267,7 +283,7 @@
               </ui:ForEachRow.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -277,12 +293,12 @@
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_CasesToBeHandeld]" DisplayName="For Each Row in Data Table - Cases we have already found" sap:VirtualizedContainerService.HintSize="486,954" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_CasesToBeHandeld]" DisplayName="For Each Row in Data Table - Cases we have already found" sap:VirtualizedContainerService.HintSize="638,954" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -340,6 +356,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Hämtade meddelanden från ärenden&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="638,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Hämtade meddelanden från ärenden&quot;]" />
   </Sequence>
 </Activity>

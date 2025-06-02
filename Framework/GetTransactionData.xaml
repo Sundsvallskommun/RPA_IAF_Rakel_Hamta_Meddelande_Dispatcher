@@ -352,7 +352,7 @@
                             <av:PointCollection x:Key="ConnectorLocation">222.5,427 124.5,427 124.5,163.5 198.5,163.5</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Upload to queue" sap:VirtualizedContainerService.HintSize="472,914" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <Sequence DisplayName="Upload to queue" sap:VirtualizedContainerService.HintSize="472,946" sap2010:WorkflowViewState.IdRef="Sequence_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -379,22 +379,22 @@
                               </ActivityAction>
                             </ui:ForEach.Body>
                           </ui:ForEach>
-                          <If Condition="[Not in_Config(&quot;Environment&quot;).ToString.Equals(&quot;TEST&quot;)]" DisplayName="If - Do Not Update if Test" sap:VirtualizedContainerService.HintSize="410,295" sap2010:WorkflowViewState.IdRef="If_3">
+                          <ui:SetAsset TimeoutMS="{x:Null}" AssetName="LatestRun" DisplayName="Set Asset - LatestRun" sap:VirtualizedContainerService.HintSize="410,25" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[Today.ToString(&quot;yyyy-MM-dd&quot;)]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:SetAsset>
+                          <If Condition="[Not in_Config(&quot;Environment&quot;).ToString.Equals(&quot;TEST&quot;)]" DisplayName="If - Do Not Update if Test" sap:VirtualizedContainerService.HintSize="410,262" sap2010:WorkflowViewState.IdRef="If_3">
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="300,113" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:SetAsset TimeoutMS="{x:Null}" AssetName="LatestRun" DisplayName="Set Asset - LatestRun" sap:VirtualizedContainerService.HintSize="258,25" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[Today.ToString(&quot;yyyy-MM-dd&quot;)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:SetAsset>
                               </Sequence>
                             </If.Then>
                             <If.Else>
