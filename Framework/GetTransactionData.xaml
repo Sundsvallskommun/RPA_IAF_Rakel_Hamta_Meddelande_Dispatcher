@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1776,1298</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1776,1258</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,7 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -318,12 +319,15 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <Assign sap2010:Annotation.AnnotationText="Get a list of dates between today and latest run" DisplayName="Assign - DateList" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign sap2010:Annotation.AnnotationText="Get a list of dates between today and latest run" DisplayName="Assign - DateList" sap:VirtualizedContainerService.HintSize="510,114" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:List(s:DateTime)">[DateList]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="scg:List(s:DateTime)">[Enumerable.Range(0, (TodaySubDays - LatestRunDateSubDays).Days + 1).Select(Function(i) LatestRunDateSubDays.AddDays(i)).ToList()]</InArgument>
+                      <InArgument x:TypeArguments="scg:List(s:DateTime)" xml:space="preserve">[Enumerable.Range(0, (TodaySubDays - LatestRunDateSubDays).Days + 1) _
+    .Select(Function(i) LatestRunDateSubDays.AddDays(i)) _
+    .Where(Function(d) d &lt;&gt; TodaySubDays) _
+    .ToList()]</InArgument>
                     </Assign.Value>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -373,13 +377,14 @@
                                   <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueNameDispatcher&quot;).ToString]" Reference="[currentDateTime.ToString(&quot;yyyy-MM-dd&quot;)]">
                                     <ui:AddQueueItem.ItemInformation>
                                       <InArgument x:TypeArguments="x:String" x:Key="Date">[currentDateTime.ToString("yyyy-MM-dd")]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="Today">[Today.ToString("yyyy-MM-dd")]</InArgument>
                                     </ui:AddQueueItem.ItemInformation>
                                   </ui:AddQueueItem>
                                 </Sequence>
                               </ActivityAction>
                             </ui:ForEach.Body>
                           </ui:ForEach>
-                          <If Condition="[Not in_Config(&quot;Environment&quot;).ToString.Equals(&quot;TEST&quot;)]" DisplayName="If - Do Not Update if Test" sap:VirtualizedContainerService.HintSize="410,295" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If Condition="[Not in_Config(&quot;Environment&quot;).ToString.ToLower.Equals(&quot;test&quot;)]" DisplayName="If - Do Not Update if Test" sap:VirtualizedContainerService.HintSize="410,295" sap2010:WorkflowViewState.IdRef="If_3">
                             <If.Then>
                               <Sequence sap:VirtualizedContainerService.HintSize="300,113" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                 <sap:WorkflowViewStateService.ViewState>
