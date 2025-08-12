@@ -9,6 +9,7 @@
     <x:Property Name="out_CasesWithAttachmentsAndMessages" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_CasesWithoutAttachmentsAndMessages" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="in_dt_Cases" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_CasesWithInformationToBeUploaded" Type="OutArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" />
   </x:Members>
   <this:Get_Attachments___Messages_and_Upload_to_Queue.in_dt_Messages>
     <InArgument x:TypeArguments="sd:DataTable" />
@@ -16,7 +17,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1838,3795</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1470,5507</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Attachments___Messages_and_Upload_to_Queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -136,7 +137,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Attachments___Messages_and_Upload_to_Queue" sap:VirtualizedContainerService.HintSize="628,3690" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Attachments___Messages_and_Upload_to_Queue" sap:VirtualizedContainerService.HintSize="628,5322" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="ListOfCaseIDWithMessages" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="ListOfAllAttachmentsIDs" />
@@ -150,7 +151,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - ListOfCaseID" sap:VirtualizedContainerService.HintSize="586,81" sap2010:WorkflowViewState.IdRef="Assign_11">
+    <Assign DisplayName="Assign - ListOfCaseID" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_11">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAllCases]</OutArgument>
       </Assign.To>
@@ -163,7 +164,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign DisplayName="Assign - ListOfCaseIDWithMessages" sap:VirtualizedContainerService.HintSize="586,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - ListOfCaseIDWithMessages" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfCaseIDWithMessages]</OutArgument>
       </Assign.To>
@@ -176,7 +177,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign DisplayName="Assign - CasesWithAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="586,81" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Assign - CasesWithAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[out_CasesWithAttachmentsAndMessages]</OutArgument>
       </Assign.To>
@@ -184,7 +185,7 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - CasesWithoutAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="586,81" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Assign - CasesWithoutAttachmentsAndMessages" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[out_CasesWithoutAttachmentsAndMessages]</OutArgument>
       </Assign.To>
@@ -192,13 +193,27 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfCaseID" sap:VirtualizedContainerService.HintSize="586,2750" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListOfCaseIDWithMessages]">
+    <Assign DisplayName="Assign - innit out_CasesWithInformationToBeUploaded" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[out_CasesWithInformationToBeUploaded]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[New Dictionary(Of String, Dictionary(Of String, String))()]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfCaseID" sap:VirtualizedContainerService.HintSize="586,3604" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListOfCaseIDWithMessages]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentCase" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,2564" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,3418" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_TEMP" />
               <Variable x:TypeArguments="x:String" Name="AllAttachmentIDs" />
@@ -211,7 +226,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:FilterDataTable DataTable="[in_dt_Messages]" DisplayName="Filter Data Table - Only get messages from client and the current CaseID" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="510,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_TEMP]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable DataTable="[in_dt_Messages]" DisplayName="Filter Data Table - Only get messages from client and the current CaseID" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="510,25" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_TEMP]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -231,18 +246,18 @@
               </ui:FilterDataTable.SelectColumns>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FilterDataTable>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_TEMP]" DisplayName="For Each Row in Data Table - dt_TEMP" sap:VirtualizedContainerService.HintSize="510,1468" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_TEMP]" DisplayName="For Each Row in Data Table - dt_TEMP" sap:VirtualizedContainerService.HintSize="510,2107" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1251" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1921" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="sxl:XDocument" Name="MessageAsXML" />
                       <Variable x:TypeArguments="scg:List(x:String)" Name="ListOfAttachmentIDs" />
@@ -255,18 +270,40 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:Comment sap:VirtualizedContainerService.HintSize="434,209" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Pga begränsningar i OeP aktiviteter hämtas attanchments name och date här. Name pga att vi behöver veta filändelsen, och date pga att vi behöver datumen när attachmentet uppladdades. &#xA;&#xA;Datum för när textmeddelandet laddades upp hämtar vi samtidigt som vi hämtar själva meddelandet i performern. " />
-                    <o:Get_Message sap2010:Annotation.AnnotationText="To get attachment ID we have to get the XML for the message." DisplayName="Get Message" DomainURL="[in_OePURL]" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Get_Message_1" MessageAsXMLDocument="[MessageAsXML]" MessageID="[CInt(CurrentRow(0))]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" Username="[in_OePUsrName]">
-                      <o:Get_Message.TempFolder>
-                        <InArgument x:TypeArguments="x:String" />
-                      </o:Get_Message.TempFolder>
+                    <ui:RetryScope DisplayName="Retry Scope - Get Message" sap:VirtualizedContainerService.HintSize="434,752" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+                      <ui:RetryScope.ActivityBody>
+                        <ActivityAction>
+                          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,577" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <o:Get_Message sap2010:Annotation.AnnotationText="To get attachment ID we have to get the XML for the message." DisplayName="Get Message" DomainURL="[in_OePURL]" sap:VirtualizedContainerService.HintSize="334,489" sap2010:WorkflowViewState.IdRef="Get_Message_2" MessageAsXMLDocument="[MessageAsXML]" MessageID="[CInt(CurrentRow(0))]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" Username="[in_OePUsrName]">
+                              <o:Get_Message.TempFolder>
+                                <InArgument x:TypeArguments="x:String" />
+                              </o:Get_Message.TempFolder>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </o:Get_Message>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:RetryScope.ActivityBody>
+                      <ui:RetryScope.Condition>
+                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                      </ui:RetryScope.Condition>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </o:Get_Message>
+                    </ui:RetryScope>
                     <Assign DisplayName="Assign - ListOfAttachmentIDs" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAttachmentIDs]</OutArgument>
@@ -297,13 +334,13 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="476,653" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <Sequence sap:VirtualizedContainerService.HintSize="476,656" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign - ListOfAttachmentNames" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign DisplayName="Assign - ListOfAttachmentNames" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAttachmentNames]</OutArgument>
                                   </Assign.To>
@@ -317,7 +354,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </Assign>
-                                <Assign DisplayName="Assign - ListOfAttachmentDate" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                <Assign DisplayName="Assign - ListOfAttachmentDate" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAttachmentDate]</OutArgument>
                                   </Assign.To>
@@ -331,7 +368,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </Assign>
-                                <Assign DisplayName="Assign - ListOfAllAttachmentsIDs" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign DisplayName="Assign - ListOfAllAttachmentsIDs" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAllAttachmentsIDs]</OutArgument>
                                   </Assign.To>
@@ -345,7 +382,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </Assign>
-                                <Assign DisplayName="Assign - ListOfAllAttachmentsNames" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                <Assign DisplayName="Assign - ListOfAllAttachmentsNames" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAllAttachmentsNames]</OutArgument>
                                   </Assign.To>
@@ -359,7 +396,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </Assign>
-                                <Assign DisplayName="Assign - ListOfAllAttachmentsDates" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                <Assign DisplayName="Assign - ListOfAllAttachmentsDates" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfAllAttachmentsDates]</OutArgument>
                                   </Assign.To>
@@ -463,7 +500,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <If Condition="[AllMessagesIDs.Count &gt; 0 OrElse &#xA;AllAttachmentIDs.Count &gt; 0]" DisplayName="If - Messages or Attachments" sap:VirtualizedContainerService.HintSize="510,637" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[AllMessagesIDs.Count &gt; 0 OrElse &#xA;AllAttachmentIDs.Count &gt; 0]" DisplayName="If - Messages or Attachments" sap:VirtualizedContainerService.HintSize="510,988" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -471,29 +508,75 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,455" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence sap:VirtualizedContainerService.HintSize="476,585" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="CaseInfo" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[currentCase]" List="[out_CasesWithAttachmentsAndMessages]" />
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Add to Performer queue" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueNamePerformer&quot;).ToString]" Reference="[currentCase]">
-                    <ui:AddQueueItem.ItemInformation>
-                      <InArgument x:TypeArguments="x:String" x:Key="MessageID">[AllMessagesIDs]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="AttachmentsID">[AllAttachmentIDs]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="AddedDate">[Today.ToString("yyyy-MM-dd")]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="CaseID">[currentCase.ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="AttachmentsNames">[AllAttachmentNames]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="AttachmentsDates">[AllAttachmentsDates]</InArgument>
-                    </ui:AddQueueItem.ItemInformation>
+                  <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[currentCase]" List="[out_CasesWithAttachmentsAndMessages]" />
+                  <Assign DisplayName="Assign - CaseInfo" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[CaseInfo]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" xml:space="preserve">[New Dictionary(Of String, String) From {
+    {"MessageID", If(String.IsNullOrEmpty(AllMessagesIDs), "", AllMessagesIDs)},
+    {"AttachmentsID", If(String.IsNullOrEmpty(AllAttachmentIDs), "", AllAttachmentIDs)},
+    {"AddedDate", If(String.IsNullOrEmpty(Today.ToString("yyyy-MM-dd")), "", Today.ToString("yyyy-MM-dd"))},
+    {"CaseID", If(String.IsNullOrEmpty(currentCase.ToString), "", currentCase.ToString)},
+    {"AttachmentsNames", If(String.IsNullOrEmpty(AllAttachmentNames), "", AllAttachmentNames)},
+    {"AttachmentsDates", If(String.IsNullOrEmpty(AllAttachmentsDates), "", AllAttachmentsDates)}
+}]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <InvokeMethod DisplayName="Invoke Method - out_CasesWithInformationToBeUploaded" sap:VirtualizedContainerService.HintSize="434,136" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[out_CasesWithInformationToBeUploaded]</InArgument>
+                    </InvokeMethod.TargetObject>
+                    <InArgument x:TypeArguments="x:String">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="currentCase.ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                      <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="CaseInfo" />
+                    </InArgument>
+                  </InvokeMethod>
+                  <ui:CommentOut DisplayName="Comment Out - Moved to SetTransactionStatus" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,282" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Add to Performer queue" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueNamePerformer&quot;).ToString]" Reference="[currentCase]">
+                          <ui:AddQueueItem.ItemInformation>
+                            <InArgument x:TypeArguments="x:String" x:Key="MessageID">[AllMessagesIDs]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="AttachmentsID">[AllAttachmentIDs]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="AddedDate">[Today.ToString("yyyy-MM-dd")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="CaseID">[currentCase.ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="AttachmentsNames">[AllAttachmentNames]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="AttachmentsDates">[AllAttachmentsDates]</InArgument>
+                          </ui:AddQueueItem.ItemInformation>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AddQueueItem>
+                      </Sequence>
+                    </ui:CommentOut.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </ui:AddQueueItem>
+                  </ui:CommentOut>
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -561,7 +644,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="A function to sort out which cases had messages (including attachmets) and who did not." DisplayName="For Each - ListOfAllCases" sap:VirtualizedContainerService.HintSize="586,25" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListOfAllCases]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="A function to sort out which cases had messages (including attachmets) and who did not." DisplayName="For Each - ListOfAllCases" sap:VirtualizedContainerService.HintSize="586,677" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListOfAllCases]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -593,7 +676,7 @@
       </ui:ForEach.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
         </scg:Dictionary>
