@@ -1,13 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Get_Cases_With_Statuses" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ListOfStatuses" Type="InArgument(scg:List(x:String))" />
-    <x:Property Name="out_dt_Cases" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_FamilyID" Type="InArgument(x:Int32)" />
     <x:Property Name="in_DateFrom" Type="InArgument(x:String)" />
     <x:Property Name="in_DateTo" Type="InArgument(x:String)" />
     <x:Property Name="in_OePUsrName" Type="InArgument(x:String)" />
     <x:Property Name="in_OePPwr" Type="InArgument(ss:SecureString)" />
     <x:Property Name="in_OePURL" Type="InArgument(x:String)" />
+    <x:Property Name="out_dt_Cases" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <this:Get_Cases_With_Statuses.in_ListOfStatuses>
     <InArgument x:TypeArguments="scg:List(x:String)" />
@@ -33,7 +33,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1470,1613</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>911,1606</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Cases_With_Statuses_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,13 +146,13 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Cases_With_Statuses" sap:VirtualizedContainerService.HintSize="528,1468" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Cases_With_Statuses" sap:VirtualizedContainerService.HintSize="724,2601" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - out_dt_Cases" sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - out_dt_Cases" sap:VirtualizedContainerService.HintSize="662,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dt_Cases]</OutArgument>
       </Assign.To>
@@ -160,13 +160,13 @@
         <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfStatuses" sap:VirtualizedContainerService.HintSize="486,1077" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ListOfStatuses]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - ListOfStatuses" sap:VirtualizedContainerService.HintSize="662,2187" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ListOfStatuses]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="452,891" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,2001" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="FoundCases" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt_CasesTemp" />
@@ -176,16 +176,16 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Retry Scope - Get Cases By FamilyID (Not Version Specific)" sap:VirtualizedContainerService.HintSize="410,360" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+            <ui:RetryScope DisplayName="Retry Scope - Get Cases By FamilyID (Not Version Specific)" sap:VirtualizedContainerService.HintSize="586,410" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="300,185" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,235" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <o:Get_Cases_By_FamilyID__Not_Version_Specific_ CasesAsXMLDocument="{x:Null}" TempFolder="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" CasesAsDataTable="[dt_CasesTemp]" DisplayName="Get Cases By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundCases]" FromDate="[Date.Parse(in_DateFrom)]" sap:VirtualizedContainerService.HintSize="258,97" sap2010:WorkflowViewState.IdRef="Get_Cases_By_FamilyID__Not_Version_Specific__1" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="30000" StatusName="[currentText.Trim]" ToDate="[Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)]" Username="[in_OePUsrName]">
+                    <o:Get_Cases_By_FamilyID__Not_Version_Specific_ CasesAsXMLDocument="{x:Null}" TempFolder="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" CasesAsDataTable="[dt_CasesTemp]" DisplayName="Get Cases By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundCases]" FromDate="[Date.Parse(in_DateFrom)]" sap:VirtualizedContainerService.HintSize="388,124" sap2010:WorkflowViewState.IdRef="Get_Cases_By_FamilyID__Not_Version_Specific__1" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="30000" StatusName="[currentText.Trim]" ToDate="[Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)]" Username="[in_OePUsrName]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -201,7 +201,7 @@
                 <ActivityFunc x:TypeArguments="x:Boolean" />
               </ui:RetryScope.Condition>
             </ui:RetryScope>
-            <If Condition="[FoundCases]" DisplayName="If - FoundCases" sap:VirtualizedContainerService.HintSize="410,403" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[FoundCases]" DisplayName="If - FoundCases" sap:VirtualizedContainerService.HintSize="586,1194" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -209,19 +209,110 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="552,1012" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MergeDataTable Destination="[out_dt_Cases]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dt_CasesTemp]" />
+                  <If Condition="[out_dt_Cases Is Nothing OrElse out_dt_Cases.Columns.Count = 0]" sap:VirtualizedContainerService.HintSize="510,474" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="476,292" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[out_dt_Cases]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataTable">[dt_CasesTemp.Clone()]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataColumn[]">[out_dt_Cases.PrimaryKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataColumn[]">[Nothing]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7" />
+                    </If.Else>
+                  </If>
+                  <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,410" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[dt_CasesTemp.Rows]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="300,224" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="258,136" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="ImportRow">
+                            <InvokeMethod.TargetObject>
+                              <InArgument x:TypeArguments="sd:DataTable">[out_dt_Cases]</InArgument>
+                            </InvokeMethod.TargetObject>
+                            <InArgument x:TypeArguments="sd:DataRow">[item]</InArgument>
+                          </InvokeMethod>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10" />
               </If.Else>
             </If>
+            <ui:CommentOut sap2010:Annotation.AnnotationText="Tidigare lösning. Får utmaningar med status &quot;återtagen&quot; då dt innehåller en primaryKey som inte syns denna gör att kolumn  &quot;FlowInstance_Id&quot; måste vara unik vilket den inte är då det är löpnr, dvs första hämnting mot api 0,1,2 osv. andra hämntning 0,1 osv&#xD;&#xA;" DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="586,229" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472,514" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[FoundCases]" DisplayName="If - FoundCases" sap:VirtualizedContainerService.HintSize="410,403" sap2010:WorkflowViewState.IdRef="If_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MergeDataTable Destination="[out_dt_Cases]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dt_CasesTemp]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
@@ -232,6 +323,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Hämtade ärenden för datumet : &quot; + in_DateFrom + &quot; och statusarna: &quot; + If(in_ListOfStatuses.Any(), in_ListOfStatuses.Aggregate(Function(a, b) a &amp; &quot;, &quot; &amp; b), &quot;&quot;)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="662,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Hämtade ärenden för datumet : &quot; + in_DateFrom + &quot; och statusarna: &quot; + If(in_ListOfStatuses.Any(), in_ListOfStatuses.Aggregate(Function(a, b) a &amp; &quot;, &quot; &amp; b), &quot;&quot;)]" />
   </Sequence>
 </Activity>

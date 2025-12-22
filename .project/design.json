@@ -1,5 +1,9 @@
 {
-  "Tags": [],
+  "Tags": [
+    {
+      "Key": "Open ePlatform API"
+    }
+  ],
   "SeparateRuntimeDependencies": true,
   "IncludeSources": true
 }

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Messages" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Messages" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="clr-namespace:OpenEplatform_API_Windows;assembly=OpenEplatform.API_Windows" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_FamilyID" Type="InArgument(x:String)" />
     <x:Property Name="in_DateFrom" Type="InArgument(x:String)" />
@@ -8,11 +8,15 @@
     <x:Property Name="in_OePURL" Type="InArgument(x:String)" />
     <x:Property Name="out_dt_Messages" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_dt_Cases" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_TimeoutGetMessages" Type="InArgument(x:Int32)" />
   </x:Members>
+  <this:Get_Messages.in_TimeoutGetMessages>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Get_Messages.in_TimeoutGetMessages>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1470,1462</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1020,2045</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Messages_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -137,7 +141,7 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Messages" sap:VirtualizedContainerService.HintSize="476,1357" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Messages" sap:VirtualizedContainerService.HintSize="476,1980" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="FoundMessages" />
       <Variable x:TypeArguments="s:DateTime" Name="EarliestDate" />
@@ -180,22 +184,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <ui:RetryScope DisplayName="Retry Scope - Get Messages By FamilyID (Not Version Specific)" sap:VirtualizedContainerService.HintSize="434,360" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:30">
+    <ui:RetryScope DisplayName="Retry Scope - Get Messages By FamilyID (Not Version Specific)" sap:VirtualizedContainerService.HintSize="434,956" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:30">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="300,185" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,781" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <o:Get_Messages_By_FamilyID__Not_Version_Specific_ MessagesAsXMLDocument="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" DisplayName="Get Messages By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundMessages]" FromDate="[EarliestDate]" sap:VirtualizedContainerService.HintSize="258,97" sap2010:WorkflowViewState.IdRef="Get_Messages_By_FamilyID__Not_Version_Specific__1" MessagesAsDataTable="[dt_MessagesTEMP]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="60000" ToDate="[Today.AddDays(1)]" Username="[in_OePUsrName]">
+            <o:Get_Messages_By_FamilyID__Not_Version_Specific_ MessagesAsXMLDocument="{x:Null}" sap2010:Annotation.AnnotationText="Date.Parse(in_DateTo).Date.AddHours(23).AddMinutes(59).AddSeconds(59)" DisplayName="Get Messages By FamilyID (Not Version Specific)" DomainURL="[in_OePURL]" FamilyID="[CInt(in_FamilyID)]" FoundCases="[FoundMessages]" FromDate="[EarliestDate]" sap:VirtualizedContainerService.HintSize="334,693" sap2010:WorkflowViewState.IdRef="Get_Messages_By_FamilyID__Not_Version_Specific__1" MessagesAsDataTable="[dt_MessagesTEMP]" NumberOfTries="1" Password="[in_OePPwr]" RequestTimeout="[in_TimeoutGetMessages]" ToDate="[Today.AddDays(1)]" Username="[in_OePUsrName]">
               <o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
                 <InArgument x:TypeArguments="x:String" />
               </o:Get_Messages_By_FamilyID__Not_Version_Specific_.TempFolder>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
@@ -224,7 +228,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[dt_MessagesTEMP.Clone]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Cases]" DisplayName="For Each Row in Data Table - Only handel cases where the Client has sent something" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Cases]" DisplayName="For Each Row in Data Table - Only handel cases where the Client has sent something" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
